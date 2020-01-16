@@ -1,23 +1,38 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>home</ion-title>
+    <ion-searchbar
+      style="margin-top: 15px;"
+      mode="ios"
+      placeholder="Search"
+      inputmode="text"
+      type="text"
+      (ionChange)="onSearchChange($event)"
+      [debounce]="250"
+      cancel-button-icon
+    ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-searchbar
-    mode="ios"
-    placeholder="Filter Pizza"
-    inputmode="email"
-    type="text"
-    (ionChange)="onSearchChange($event)"
-    [debounce]="250"
-    cancel-button-icon
-  ></ion-searchbar>
-  <ion-list>
+  <ion-grid fixed *ngIf="textFilter === ''">
+    <ion-row>
+      <ion-col *ngFor="let card of cards">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
+            <ion-card-title>{{ card.title }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Awesome content
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list *ngIf="textFilter !== ''">
     <ion-item>
       <ion-label>Input</ion-label>
       <ion-input></ion-input>

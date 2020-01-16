@@ -8,6 +8,26 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomePage implements OnInit {
   textFilter = '';
+  cards = [
+    {
+      title: 'Graphic Book',
+      url: '',
+      icon: '',
+      picture: ''
+    },
+    {
+      title: 'E-Book',
+      url: '',
+      icon: '',
+      picture: ''
+    },
+    {
+      title: 'Game',
+      url: '',
+      icon: '',
+      picture: ''
+    }
+  ];
 
   constructor(
     private authService: AuthService
