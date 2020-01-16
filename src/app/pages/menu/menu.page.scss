@@ -1,0 +1,12 @@
+.active-item {
+  border-left: 8px solid var(--ion-color-primary);
+}
+
+.split-pane-visible > .split-pane-side {
+  flex-grow: 5;
+  min-width: 100px; /* Default: 270px */
+  max-width: 104px; /* Same as when menu opens in mobile mode */
+}
+.split-pane-visible > .split-pane-main {
+  flex-grow: 95;
+}
