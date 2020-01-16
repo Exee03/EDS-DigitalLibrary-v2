@@ -20,14 +20,11 @@
   <ion-grid fixed *ngIf="textFilter === ''">
     <ion-row>
       <ion-col *ngFor="let card of cards">
-        <ion-card>
+        <ion-card style="background: white;">
+          <img [src]="card.picture">
           <ion-card-header>
-            <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
-            <ion-card-title>{{ card.title }}</ion-card-title>
+            <ion-card-title [ngStyle]="{'color': card.color, 'font-size': '35px', 'font-weight': 'bold'}">{{ card.title }}</ion-card-title>
           </ion-card-header>
-          <ion-card-content>
-            Awesome content
-          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
@@ -50,10 +47,4 @@
       <ion-checkbox slot="start"></ion-checkbox>
     </ion-item>
   </ion-list>
-  <ion-button (click)="logout()">
-    logout
-  </ion-button>
-  <ion-button (click)="writeJson()">
-    Click me
-  </ion-button>
 </ion-content>

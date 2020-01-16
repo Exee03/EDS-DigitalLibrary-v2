@@ -12,20 +12,20 @@ export class HomePage implements OnInit {
     {
       title: 'Graphic Book',
       url: '',
-      icon: '',
-      picture: ''
+      color: '#E39803',
+      picture: '../../../assets/images/graphic-book.png'
     },
     {
       title: 'E-Book',
       url: '',
-      icon: '',
-      picture: ''
+      color: '#509DFF',
+      picture: '../../../assets/images/e-book.png'
     },
     {
       title: 'Game',
       url: '',
-      icon: '',
-      picture: ''
+      color: '#184463',
+      picture: '../../../assets/images/game.png'
     }
   ];
 
@@ -34,14 +34,6 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-  }
-
-  logout() {
-    this.authService.logout();
-  }
-
-  writeJson() {
-    this.authService.writeJsonStorage();
   }
 
   onSearchChange(event) {
