@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar
+    mode="ios"
+    placeholder="Filter Pizza"
+    inputmode="email"
+    type="text"
+    (ionChange)="onSearchChange($event)"
+    [debounce]="250"
+    cancel-button-icon
+  ></ion-searchbar>
+  <ion-list>
+    <ion-item>
+      <ion-label>Input</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Toggle</ion-label>
+      <ion-toggle slot="end"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Radio</ion-label>
+      <ion-radio slot="end"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Checkbox</ion-label>
+      <ion-checkbox slot="start"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="logout()">
+    logout
+  </ion-button>
+  <ion-button (click)="writeJson()">
+    Click me
+  </ion-button>
+</ion-content>
