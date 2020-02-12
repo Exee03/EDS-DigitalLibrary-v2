@@ -21,7 +21,6 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       console.log('platform ready');
-      
       this.authService.authState.subscribe(state => {
         console.log('Auth changed: ', state);
         if (state) {

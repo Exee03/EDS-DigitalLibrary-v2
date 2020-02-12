@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { RegisterPageModule } from './modals/register/register.module';
+import { ContentViewerPageModule } from './modals/content-viewer/content-viewer.module';
+import { SettingPopoverPageModule } from './components/setting-popover/setting-popover.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +21,9 @@ import { RegisterPageModule } from './modals/register/register.module';
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
-    RegisterPageModule
+    RegisterPageModule,
+    ContentViewerPageModule,
+    SettingPopoverPageModule
   ],
   providers: [
     StatusBar,
