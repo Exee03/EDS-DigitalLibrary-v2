@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { SettingPopoverPage } from 'src/app/components/setting-popover/setting-popover.page';
 import { Card } from 'src/app/models/card';
 import { ListContentPage } from 'src/app/modals/list-content/list-content.page';
+import { ContentService } from 'src/app/services/content.service';
+import { Content } from 'src/app/models/content';
 
 @Component({
   selector: 'app-home',
@@ -30,13 +31,17 @@ export class HomePage implements OnInit {
     }
   ];
 
+  contents: Content[] = [];
+
   constructor(
-    private authService: AuthService,
+    private contentService: ContentService,
     private modalController: ModalController,
     private popoverController: PopoverController
   ) {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.contents = await this.contentService.fetchContents();
+  }
 
   onSearchChange(event) {
     const text: string = event.target.value;
@@ -80,8 +85,14 @@ export class HomePage implements OnInit {
       // tslint:disable-next-line: no-shadowed-variable
       reader.onload = (event: any) => {
         const file = event.target.result;
+        // console.log(file);
+        
       };
       reader.readAsDataURL(event.target.files[0]);
+      // const tmppath = URL.createObjectURL(event.target.files[0]);
+      console.log(event);
+      
+
     }
   }
 }

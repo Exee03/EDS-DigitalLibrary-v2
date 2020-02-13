@@ -8,7 +8,7 @@
         <ion-col>
           <ion-item lines="none" class="ion-padding">
             <ion-avatar slot="start">
-              <!-- <img src="../../../assets/icon/favicon.png" /> -->
+              <img src="../../../assets/icon/favicon.png" />
             </ion-avatar>
             <ion-title>Hi Danish!</ion-title>
           </ion-item>
@@ -60,10 +60,11 @@
     </ion-row>
   </ion-grid>
   <ion-list *ngIf="textFilter !== ''">
-    <ion-fab-button>
+    <!-- <ion-fab-button>
       <input
         (change)="onFileSelected($event)"
         type="file"
+        webkitdirectory directory
         name="file"
         id="file"
         class="fileInput"
@@ -71,22 +72,27 @@
       <label for="file"
         ><ion-icon name="document" style="zoom: 2;"></ion-icon
       ></label>
-    </ion-fab-button>
-    <ion-item>
-      <ion-label>Input</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Toggle</ion-label>
-      <ion-toggle slot="end"></ion-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-label>Radio</ion-label>
-      <ion-radio slot="end"></ion-radio>
-    </ion-item>
-    <ion-item>
-      <ion-label>Checkbox</ion-label>
-      <ion-checkbox slot="start"></ion-checkbox>
-    </ion-item>
+    </ion-fab-button> -->
+
+    <ion-card *ngFor="let content of contents | title: textFilter" [color]="content.type">
+      <ion-grid style="padding: unset; margin: unset;">
+        <ion-row style="padding: unset; margin: unset;">
+          <ion-col size="8">
+            <ion-card-header>
+              <ion-card-title>{{content.title}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>  
+              
+              {{content.desc}}
+            </ion-card-content>
+          </ion-col>
+          <ion-col align-self-center size="2">
+            <div style="height: 100%; width: 100%; text-align: right; pointer-events:none" [innerHTML]="content.url | safe: 'urlToHtml'"></div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+    </ion-card>
   </ion-list>
+  
 </ion-content>
