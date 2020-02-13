@@ -15,6 +15,7 @@ export class ContentService {
     const res = await fetch('assets/contents/contents.json');
     const data =  await res.json();
     this.contents = data.contents;
+    return this.contents;
   }
 
   async getContents(type: string): Promise<Content[]> {

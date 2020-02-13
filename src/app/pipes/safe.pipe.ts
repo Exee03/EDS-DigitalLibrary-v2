@@ -29,6 +29,9 @@ export class SafePipe implements PipeTransform {
         return this.sanitizer.bypassSecurityTrustUrl(value);
       case 'resourceUrl':
         return this.sanitizer.bypassSecurityTrustResourceUrl(value);
+      case 'urlToHtml':
+        const html = `<embed src="${value}" width="100%" height="100%" >`;
+        return this.sanitizer.bypassSecurityTrustHtml(html);
       default:
         throw new Error(`Invalid safe type specified: ${type}`);
     }

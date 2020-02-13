@@ -4,17 +4,17 @@
             "title": "Action",
             "desc": "Description of Action game.",
             "type": "games",
-            "lastAdded": "2020-02-13T04:31:02.685Z",
+            "lastAdded": "2/13/2020, 10:56:04 PM",
             "id": "asd1",
-            "url": "src/assets/contents/games/actions.swf"
+            "url": "../../../assets/contents/games/actions.swf"
         },
         {
-            "title": "Action",
-            "desc": "Description of Action game.",
+            "title": "Are you Saboor",
+            "desc": "Description of Are you Saboor game.",
             "type": "games",
-            "lastAdded": "2020-02-13T04:31:02.685Z",
+            "lastAdded": "2/13/2020, 10:56:04 PM",
             "id": "asd2",
-            "url": "src/assets/contents/games/actions.swf"
+            "url": "../../../assets/contents/games/Are_you_Saboor.swf"
         }
     ]
 }

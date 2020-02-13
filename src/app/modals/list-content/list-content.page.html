@@ -14,7 +14,11 @@
             <ion-grid style="height: 100%;">
               <ion-row style="height: 100%;">
                 <ion-col class="ion-align-self-end">
-                  <ion-title style="font-size: 70px; font-weight: bold;" [color]="card.type">{{card.title}}</ion-title>
+                  <ion-title
+                    style="font-size: 70px; font-weight: bold;"
+                    [color]="card.type"
+                    >{{card.title}}</ion-title
+                  >
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -36,21 +40,48 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
-    block
-  </ion-button>
-  <ion-card *ngFor="let item of items">
-    <ion-card-header>
-      <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
-      <ion-card-title>Awesome Title</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Awesome content
-    </ion-card-content>
+<ion-content *ngIf="contents.length != 0">
+  <ion-card *ngFor="let content of contents" (click)="onClick(content)" [color]="card.type">
+    <ion-grid style="padding: unset; margin: unset;">
+      <ion-row style="padding: unset; margin: unset;">
+        <ion-col size="8">
+          <ion-card-header>
+            <ion-card-title>{{content.title}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            
+            {{content.desc}}
+          </ion-card-content>
+        </ion-col>
+        <ion-col align-self-center size="2">
+          <div style="height: 100%; width: 100%; text-align: right; pointer-events:none" [innerHTML]="content.url | safe: 'urlToHtml'"></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
   </ion-card>
-  <!-- <ion-list-header *ngFor="let item of items">
-    <ion-label>New This Week</ion-label>
-    <ion-button>See All</ion-button>
-  </ion-list-header> -->
+</ion-content>
+
+<ion-content *ngIf="contents.length == 0">
+  <ion-grid>
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+      style="height: 100%"
+    >
+      <ion-label
+        position="floating"
+        style="text-align: center; font-size: x-large;"
+        >Oh no! <br />
+        There are no {{card.title}}.</ion-label
+      >
+    </ion-row>
+    <ion-row
+      class="ion-align-items-center ion-justify-content-center"
+    >
+      <ion-img
+        src="../../../assets/images/error.png"
+        style="height: 50vh; padding-top: 10vh;"
+      ></ion-img>
+    </ion-row>
+  </ion-grid>
 </ion-content>
