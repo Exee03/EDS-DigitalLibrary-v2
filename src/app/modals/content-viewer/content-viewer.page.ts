@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
+import { Content } from 'src/app/models/content';
+import { timestamp } from 'rxjs/operators';
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
 @Component({
   selector: 'app-content-viewer',
@@ -7,24 +10,19 @@ import { ModalController, NavParams } from '@ionic/angular';
   styleUrls: ['./content-viewer.page.scss']
 })
 export class ContentViewerPage implements OnInit {
-  content: string;
+  content: Content;
   html: string;
-  type: string;
-  title: string;
-  color: string;
 
   constructor(
     private modalController: ModalController,
     private navParams: NavParams
   ) {
     this.content = this.navParams.get('content');
-    this.type = this.navParams.get('type');
-    this.title = this.navParams.get('title');
-    this.color = this.navParams.get('color');
-    this.html = `<embed src="${this.content}" width="100%" height="100%" >`;
+    this.html = `<embed src="${this.content.url}" width="100%" height="100%" >`;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   close() {
     this.modalController.dismiss();
