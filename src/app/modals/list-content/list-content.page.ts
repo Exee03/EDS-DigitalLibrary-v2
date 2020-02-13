@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from 'src/app/models/card';
 import { ModalController, NavParams } from '@ionic/angular';
+import { ContentService } from 'src/app/services/content.service';
 
 @Component({
   selector: 'app-list-content',
@@ -13,12 +14,19 @@ export class ListContentPage implements OnInit {
   items = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado', 'Bombasto', 'Magneta', 'Tornado', 'Bombasto', 'Magneta', 'Tornado', 'Bombasto', 'Magneta', 'Tornado', 'Bombasto', 'Magneta', 'Tornado', 'Bombasto', 'Magneta', 'Tornado', 'Bombasto', 'Magneta', 'Tornado'];
 
   constructor(
+    private contentService: ContentService,
     private modalController: ModalController,
     private navParams: NavParams
   ) { }
 
   ngOnInit() {
     this.card = this.navParams.get('card');
+  }
+
+  async onClick() {
+    const data = await this.contentService.getContents(this.card.type);
+    data.forEach(d => console.log(d.id)
+    );
   }
 
   close() {

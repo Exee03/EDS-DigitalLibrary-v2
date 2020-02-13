@@ -15,17 +15,17 @@ export class HomePage implements OnInit {
   cards: Card[] = [
     {
       title: 'Graphic Book',
-      color: 'graphic-book',
+      type: 'graphic-book',
       picture: '../../../assets/images/graphic-book.png'
     },
     {
       title: 'E-Book',
-      color: 'e-book',
+      type: 'e-book',
       picture: '../../../assets/images/e-book.png'
     },
     {
       title: 'Games',
-      color: 'games',
+      type: 'games',
       picture: '../../../assets/images/game.png'
     }
   ];
@@ -72,5 +72,16 @@ export class HomePage implements OnInit {
 
   syncTasks(a) {
     console.log(a);
+  }
+  
+  onFileSelected(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      // tslint:disable-next-line: no-shadowed-variable
+      reader.onload = (event: any) => {
+        const file = event.target.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 }

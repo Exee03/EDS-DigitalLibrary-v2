@@ -3,6 +3,6 @@ export interface Content {
     desc: string;
     type: string;
     lastAdded: string;
-    id: number;
-    source: string;
+    id: string;
+    url: string;
 }

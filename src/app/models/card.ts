@@ -1,5 +1,5 @@
 export interface Card {
   title: string;
-  color: string;
+  type: string;
   picture: string;
 }

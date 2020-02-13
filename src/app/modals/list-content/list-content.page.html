@@ -14,7 +14,7 @@
             <ion-grid style="height: 100%;">
               <ion-row style="height: 100%;">
                 <ion-col class="ion-align-self-end">
-                  <ion-title style="font-size: 70px; font-weight: bold;" [color]="card.color">{{card.title}}</ion-title>
+                  <ion-title style="font-size: 70px; font-weight: bold;" [color]="card.type">{{card.title}}</ion-title>
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -24,7 +24,7 @@
           <ion-buttons>
             <ion-button (click)="close()">
               <ion-icon
-                [color]="card.color"
+                [color]="card.type"
                 slot="icon-only"
                 name="close"
               ></ion-icon>
@@ -37,8 +37,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-list-header *ngFor="let item of items">
+  <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
+    block
+  </ion-button>
+  <ion-card *ngFor="let item of items">
+    <ion-card-header>
+      <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle>
+      <ion-card-title>Awesome Title</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Awesome content
+    </ion-card-content>
+  </ion-card>
+  <!-- <ion-list-header *ngFor="let item of items">
     <ion-label>New This Week</ion-label>
     <ion-button>See All</ion-button>
-  </ion-list-header>
+  </ion-list-header> -->
 </ion-content>

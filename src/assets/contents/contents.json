@@ -1,0 +1,20 @@
+{
+    "contents": [
+        {
+            "title": "Action",
+            "desc": "Description of Action game.",
+            "type": "games",
+            "lastAdded": "2020-02-13T04:31:02.685Z",
+            "id": "asd1",
+            "url": "src/assets/contents/games/actions.swf"
+        },
+        {
+            "title": "Action",
+            "desc": "Description of Action game.",
+            "type": "games",
+            "lastAdded": "2020-02-13T04:31:02.685Z",
+            "id": "asd2",
+            "url": "src/assets/contents/games/actions.swf"
+        }
+    ]
+}

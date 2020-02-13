@@ -8,7 +8,7 @@
         <ion-col>
           <ion-item lines="none" class="ion-padding">
             <ion-avatar slot="start">
-              <img src="../../../assets/icon/favicon.png" />
+              <!-- <img src="../../../assets/icon/favicon.png" /> -->
             </ion-avatar>
             <ion-title>Hi Danish!</ion-title>
           </ion-item>
@@ -50,7 +50,7 @@
           <img [src]="card.picture" />
           <ion-card-header>
             <ion-card-title
-              [color]="card.color"
+              [color]="card.type"
               style="font-size: 35px; font-weight: bold;"
               >{{ card.title }}</ion-card-title
             >
@@ -60,6 +60,18 @@
     </ion-row>
   </ion-grid>
   <ion-list *ngIf="textFilter !== ''">
+    <ion-fab-button>
+      <input
+        (change)="onFileSelected($event)"
+        type="file"
+        name="file"
+        id="file"
+        class="fileInput"
+      />
+      <label for="file"
+        ><ion-icon name="document" style="zoom: 2;"></ion-icon
+      ></label>
+    </ion-fab-button>
     <ion-item>
       <ion-label>Input</ion-label>
       <ion-input></ion-input>
