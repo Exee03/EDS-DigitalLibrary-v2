@@ -1,38 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { ModalController, PopoverController, Events } from '@ionic/angular';
-import { ContentViewerPage } from 'src/app/modals/content-viewer/content-viewer.page';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { SettingPopoverPage } from 'src/app/components/setting-popover/setting-popover.page';
+import { Card } from 'src/app/models/card';
+import { ListContentPage } from 'src/app/modals/list-content/list-content.page';
 
-interface Card {
-  title: string;
-  url: string;
-  color: string;
-  picture: string;
-}
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  styleUrls: ['./home.page.scss']
 })
 export class HomePage implements OnInit {
   textFilter = '';
   cards: Card[] = [
     {
       title: 'Graphic Book',
-      url: '../../../assets/contents/games/bedroom.swf',
       color: 'graphic-book',
       picture: '../../../assets/images/graphic-book.png'
     },
     {
       title: 'E-Book',
-      url: '../../../assets/contents/games/hangman.swf',
       color: 'e-book',
       picture: '../../../assets/images/e-book.png'
     },
     {
       title: 'Games',
-      url: '../../../assets/contents/games/numbers.swf',
       color: 'games',
       picture: '../../../assets/images/game.png'
     }
@@ -41,12 +33,10 @@ export class HomePage implements OnInit {
   constructor(
     private authService: AuthService,
     private modalController: ModalController,
-    private popoverController: PopoverController,
-    private events: Events
-  ) { }
+    private popoverController: PopoverController
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSearchChange(event) {
     const text: string = event.target.value;
@@ -55,13 +45,11 @@ export class HomePage implements OnInit {
 
   async openModal(card: Card) {
     const modal = await this.modalController.create({
-      component: ContentViewerPage,
+      component: ListContentPage,
       backdropDismiss: false,
+      cssClass: 'wideModal',
       componentProps: {
-        content: card.url,
-        title: card.url,
-        type: card.title,
-        color: card.color,
+        card
       }
     });
     return await modal.present();
@@ -70,7 +58,7 @@ export class HomePage implements OnInit {
   async settingsPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: SettingPopoverPage,
-      event: ev,
+      event: ev
       // componentProps: { page: 'Login' },
       // cssClass: 'popover_class',
     });
@@ -85,5 +73,4 @@ export class HomePage implements OnInit {
   syncTasks(a) {
     console.log(a);
   }
-
 }
