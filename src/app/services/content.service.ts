@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Content } from '../models/content';
 import { map, isEmpty } from 'rxjs/operators';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,9 @@ import { map, isEmpty } from 'rxjs/operators';
 export class ContentService {
   contents: Content[] = [];
 
-  constructor() {}
+  constructor(
+    private storage: Storage
+  ) {}
 
   async fetchContents() {
     console.log('fetch');
@@ -25,5 +28,12 @@ export class ContentService {
     return data;
   }
 
+  saveContent(name: string, url: string) {
+    this.storage.set('game', {name, url});
+  }
 
+  async getContentFromStorage() {
+    const data = await this.storage.get('game');
+    return data;
+  }
 }
