@@ -1,11 +1,145 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-button (click)="login()">
-    Login
-  </ion-button>
+<ion-content style="height: 100%;">
+  <ion-grid style="height: 100%;">
+    <ion-row
+      class="ion-align-items-end ion-justify-content-center"
+      style="height: 30%"
+    >
+      <ion-img
+        src="assets/images/background.jpg"
+        style="height: 100%;"
+      ></ion-img>
+    </ion-row>
+    <ion-row
+      class="ion-align-items-start ion-justify-content-center"
+      style="height: 70%"
+    >
+      <ion-card
+        *ngIf="!isRegister"
+        style="width: fit-content; height: fit-content;"
+        color="primary"
+      >
+        <ion-card-title style="text-align: center;">
+          <ion-text>
+            <h3>Welcome to</h3>
+            <h1>Digital Library</h1>
+          </ion-text>
+        </ion-card-title>
+        <ion-card-content>
+          <ion-grid class="ion-no-padding" style="height: 100%; width: 100%;">
+            <ion-row
+              class="ion-justify-content-center ion-align-items-center"
+              style="height: 30%; margin-right: 30px; margin-left: 30px;"
+            >
+              <ion-item style="width: 100%; margin: 10px; border-radius: 15px;">
+                <ion-label position="floating">Username</ion-label>
+                <ion-input
+                  clearInput
+                  type="text"
+                  [(ngModel)]="username"
+                  autocomplete="off"
+                  autocorrect="off"
+                ></ion-input>
+              </ion-item>
+              <ion-item
+                style="width: 100%; margin: 10px; border-radius: 15px;"
+                *ngIf="username == 'admin'"
+              >
+                <ion-label position="floating">Password</ion-label>
+                <ion-input
+                  clearInput
+                  type="password"
+                  [(ngModel)]="password"
+                  autocomplete="off"
+                  autocorrect="off"
+                ></ion-input>
+              </ion-item>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+        <ion-card-subtitle style="width: 100%; text-align: center;">
+          <ion-button
+            color="dark"
+            (click)="login()"
+            fill="solid"
+            shape="round"
+            style="width: 50%;"
+          >
+            Login
+          </ion-button>
+          <br />
+          <ion-button
+            (click)="changeForm()"
+            fill="clear"
+            shape="round"
+            color="dark"
+            style="margin-bottom: 30px;"
+          >
+            I don't have an account yet.
+          </ion-button>
+        </ion-card-subtitle>
+      </ion-card>
+      <ion-card
+        *ngIf="isRegister"
+        style="width: fit-content; height: fit-content;"
+        color="primary"
+      >
+        <ion-card-title style="text-align: center;">
+          <ion-text>
+            <h1>Hi there!</h1>
+            <h3>There are a few questions for you.</h3>
+          </ion-text>
+        </ion-card-title>
+        <ion-card-content>
+          <ion-grid class="ion-no-padding" style="height: 100%; width: 100%;">
+            <ion-row
+              class="ion-justify-content-center ion-align-items-center"
+              style="height: 30%; margin-right: 30px; margin-left: 30px;"
+            >
+              <ion-item style="width: 100%; margin: 10px; border-radius: 15px;">
+                <ion-label position="floating">What is your nickname?</ion-label>
+                <ion-input
+                  clearInput
+                  type="text"
+                  [(ngModel)]="username"
+                  autocomplete="off"
+                  autocorrect="off"
+                ></ion-input>
+              </ion-item>
+              <ion-item style="width: 100%; margin: 10px; border-radius: 15px;">
+                <ion-label position="floating">What is your full name?</ion-label>
+                <ion-input
+                  clearInput
+                  type="text"
+                  [(ngModel)]="fullName"
+                  autocomplete="off"
+                  autocorrect="off"
+                ></ion-input>
+              </ion-item>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+        <ion-card-subtitle style="width: 100%; text-align: center;">
+          <ion-button
+            color="dark"
+            (click)="selectAvatar()"
+            fill="solid"
+            shape="round"
+            style="width: 50%;"
+          >
+            Register
+          </ion-button>
+          <br />
+          <ion-button
+            (click)="changeForm()"
+            fill="clear"
+            shape="round"
+            color="dark"
+            style="margin-bottom: 30px;"
+          >
+            I already have an account.
+          </ion-button>
+        </ion-card-subtitle>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -13,6 +13,7 @@ import { RegisterPageModule } from './modals/register/register.module';
 import { ContentViewerPageModule } from './modals/content-viewer/content-viewer.module';
 import { SettingPopoverPageModule } from './components/setting-popover/setting-popover.module';
 import { ListContentPageModule } from './modals/list-content/list-content.module';
+import { SelectAvatarPageModule } from './modals/select-avatar/select-avatar.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,8 @@ import { ListContentPageModule } from './modals/list-content/list-content.module
     RegisterPageModule,
     ContentViewerPageModule,
     SettingPopoverPageModule,
-    ListContentPageModule
+    ListContentPageModule,
+    SelectAvatarPageModule
   ],
   providers: [
     StatusBar,

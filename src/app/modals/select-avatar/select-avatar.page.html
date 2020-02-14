@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Select your Avatar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-grid class="ion-no-padding">
+   <ion-row>
+     <ion-col *ngFor="let a of avatars">
+      <ion-card (click)="select(a)" >
+        <img
+        [src]="a"
+        style="height: 100%;"
+        [ngStyle]="{'border': avatar == a ? '8px solid var(--ion-color-primary)' : '0px'}"
+      >
+      </ion-card>
+    </ion-col>
+   </ion-row>
+ </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="register()" expand="block" fill="solid" shape="round">
+      I choose this Avatar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

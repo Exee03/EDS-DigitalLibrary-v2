@@ -1,29 +1,30 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-grid fixed>
+    
+    <ion-grid  class="ion-no-margin">
       <ion-row>
+        <ion-col size="auto">
+          <ion-buttons>
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-col>
         <ion-col>
           <ion-item lines="none" class="ion-padding">
             <ion-avatar slot="start">
-              <img src="../../../assets/icon/favicon.png" />
+              <img [src]="user.avatar" />
             </ion-avatar>
-            <ion-title>Hi Danish!</ion-title>
+            <ion-title>Hi {{user.username}}!</ion-title>
           </ion-item>
         </ion-col>
         <ion-col size="auto">
           <ion-item lines="none">
-            <ion-icon name="pizza"></ion-icon>
-            <ion-badge>42</ion-badge>
-            <ion-icon name="add" class="ion-padding-start"></ion-icon>
-            <ion-badge>42</ion-badge>
+            <ion-icon name="trophy"></ion-icon>
+            <ion-badge>{{user.trophy}}</ion-badge>
           </ion-item>
         </ion-col>
         <ion-col size="auto">
           <ion-item lines="none" (click)="settingsPopover($event)">
-            <ion-label>Danish Adam</ion-label>
+            <ion-label>{{user.fullName}}</ion-label>
             <ion-icon name="arrow-dropdown"></ion-icon>
           </ion-item>
         </ion-col>
@@ -64,7 +65,6 @@
       <input
         (change)="onFileSelected($event)"
         type="file"
-        webkitdirectory directory
         name="file"
         id="file"
         class="fileInput"
@@ -74,25 +74,29 @@
       ></label>
     </ion-fab-button> -->
 
-    <ion-card *ngFor="let content of contents | title: textFilter" [color]="content.type">
+    <ion-card
+      *ngFor="let content of contents | title: textFilter"
+      [color]="content.type"
+      (click)="openContent(content)"
+    >
       <ion-grid style="padding: unset; margin: unset;">
         <ion-row style="padding: unset; margin: unset;">
           <ion-col size="8">
             <ion-card-header>
               <ion-card-title>{{content.title}}</ion-card-title>
             </ion-card-header>
-            <ion-card-content>  
-              
+            <ion-card-content>
               {{content.desc}}
             </ion-card-content>
           </ion-col>
-          <ion-col align-self-center size="2">
-            <div style="height: 100%; width: 100%; text-align: right; pointer-events:none" [innerHTML]="content.url | safe: 'urlToHtml'"></div>
+          <ion-col class="ion-align-self-center" size="2">
+            <div
+              style="height: 100%; width: 100%; text-align: right; pointer-events:none"
+              [innerHTML]="content.url | safe: 'urlToHtml'"
+            ></div>
           </ion-col>
         </ion-row>
       </ion-grid>
-      
     </ion-card>
   </ion-list>
-  
 </ion-content>
