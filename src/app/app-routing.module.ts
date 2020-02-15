@@ -15,10 +15,6 @@ const routes: Routes = [
     path: 'menu',
     loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule)
   },
-  {
-    path: 'select-avatar',
-    loadChildren: () => import('./modals/select-avatar/select-avatar.module').then( m => m.SelectAvatarPageModule)
-  },
 ];
 
 @NgModule({
