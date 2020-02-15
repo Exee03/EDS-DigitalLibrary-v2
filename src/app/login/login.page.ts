@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
           component: SelectAvatarPage,
           backdropDismiss: false,
           componentProps: {
-            username: this.commonService.capitalize(this.username),
+            username: this.username,
             fullName: this.commonService.capitalize(this.fullName),
             avatars
           }
