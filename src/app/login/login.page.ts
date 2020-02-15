@@ -38,12 +38,14 @@ export class LoginPage implements OnInit {
   async selectAvatar() {
     if (this.username !== '' && this.fullName !== '') {
       if (! await this.authService.isUserExist(this.username)) {
+        const avatars = await this.authService.getAvatars();
         const modal = await this.modalController.create({
           component: SelectAvatarPage,
           backdropDismiss: false,
           componentProps: {
             username: this.commonService.capitalize(this.username),
             fullName: this.commonService.capitalize(this.fullName),
+            avatars
           }
         });
         return await modal.present();

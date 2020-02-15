@@ -5,23 +5,27 @@
 </ion-header>
 
 <ion-content>
- <ion-grid class="ion-no-padding">
-   <ion-row>
-     <ion-col *ngFor="let a of avatars">
-      <ion-card (click)="select(a)" >
-        <img
-        [src]="a"
-        style="height: 100%;"
-        [ngStyle]="{'border': avatar == a ? '8px solid var(--ion-color-primary)' : '0px'}"
-      >
-      </ion-card>
-    </ion-col>
-   </ion-row>
- </ion-grid>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-justify-content-center">
+      <ion-col *ngFor="let a of avatars" size="auto">
+        <ion-card (click)="select(a.url)" style="height: 100px; width: 100px;">
+          <img
+            [src]="a.url"
+            height="100%"
+            width="100%"
+            [ngStyle]="{'border': avatar == a.url ? '8px solid var(--ion-color-primary)' : '0px'}"
+          />
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 <ion-footer>
-  <ion-toolbar>
-    <ion-button (click)="register()" expand="block" fill="solid" shape="round">
+  <ion-label class="ion-text-center">
+    <p>Icon made by Smashicons & Freepik from www.flaticon.com</p>
+  </ion-label>
+  <ion-toolbar class="ion-text-center">
+    <ion-button (click)="register()" fill="solid" shape="round" color="dark">
       I choose this Avatar
     </ion-button>
   </ion-toolbar>

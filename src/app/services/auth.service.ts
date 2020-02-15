@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 import { saveAs } from 'file-saver';
 import { User } from '../models/user';
 import { Platform } from '@ionic/angular';
+import { Avatar } from '../models/avatar';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,14 @@ export class AuthService {
   authState = new BehaviorSubject(false);
   users: User[] = null;
   currentUser: User;
+  avatars: Avatar[] = null;
 
   constructor(
     private storage: Storage,
     private commonService: CommonService,
     private platform: Platform
     ) {
-    console.log('auth service ready');
+    console.log('Authentication Service ready!');
     this.platform.ready().then(() => this.checkToken());
   }
 
@@ -60,6 +62,15 @@ export class AuthService {
     // tslint:disable-next-line: no-unused-expression
     this.users = (this.users === null) ? await this.getUsers() : this.users;
     return (this.users === null) ? false : (this.users.find(u => u.username === username)) ? true : false;
+  }
+
+  async getAvatars(): Promise<Avatar[]> {
+    if (this.avatars === null) {
+      const res = await fetch('assets/avatars/avatars.json');
+      const data =  await res.json();
+      this.avatars = data.avatar;
+    }
+    return this.avatars;
   }
 
   checkToken() {
