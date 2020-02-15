@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Content } from '../models/content';
-import { map, isEmpty } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
 
 @Injectable({
@@ -14,7 +13,6 @@ export class ContentService {
   ) {}
 
   async fetchContents() {
-    console.log('fetch');
     const res = await fetch('assets/contents/contents.json');
     const data =  await res.json();
     this.contents = data.contents;

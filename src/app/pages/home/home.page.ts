@@ -82,27 +82,27 @@ export class HomePage implements OnInit {
     return await popover.present();
   }
 
-  syncTasks(a) {
-    console.log(a);
-  }
-  
-  onFileSelected(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      // tslint:disable-next-line: no-shadowed-variable
-      reader.onload = (event: any) => {
-        const file = event.target.result;
-        // console.log(file);
-        this.contentService.saveContent(event.target.files[0].name, file);
-        
-      };
-      reader.readAsDataURL(event.target.files[0]);
-      // const tmppath = URL.createObjectURL(event.target.files[0]);
-      console.log(event.target.files[0]);
-      
+  // syncTasks(a) {
+  //   console.log(a);
+  // }
 
-    }
-  }
+  // onFileSelected(event: any) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     const reader = new FileReader();
+  //     // tslint:disable-next-line: no-shadowed-variable
+  //     reader.onload = (event: any) => {
+  //       const file = event.target.result;
+  //       // console.log(file);
+  //       this.contentService.saveContent(event.target.files[0].name, file);
+
+  //     };
+  //     reader.readAsDataURL(event.target.files[0]);
+  //     // const tmppath = URL.createObjectURL(event.target.files[0]);
+  //     console.log(event.target.files[0]);
+
+
+  //   }
+  // }
 
   async openContent(content: Content) {
     const modal = await this.modalController.create({
@@ -113,5 +113,5 @@ export class HomePage implements OnInit {
       }
     });
     return await modal.present();
-}
+  }
 }
