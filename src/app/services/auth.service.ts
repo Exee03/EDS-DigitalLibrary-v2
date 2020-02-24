@@ -4,8 +4,9 @@ import { CommonService } from './common.service';
 import { Storage } from '@ionic/storage';
 import { saveAs } from 'file-saver';
 import { User } from '../models/user';
-import { Platform } from '@ionic/angular';
+import { Platform, ModalController } from '@ionic/angular';
 import { Avatar } from '../models/avatar';
+import { ContinueLoginPage } from '../modals/continue-login/continue-login.page';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,9 @@ export class AuthService {
   constructor(
     private storage: Storage,
     private commonService: CommonService,
-    private platform: Platform
-    ) {
+    private platform: Platform,
+    private modalController: ModalController
+  ) {
     console.log('Authentication Service ready!');
     this.platform.ready().then(() => this.checkToken());
   }
@@ -32,14 +34,20 @@ export class AuthService {
       this.saveCurrentUser();
       this.authState.next(true);
     } else {
-      this.commonService.showAlert('Oppsss...', `Your username doesn't exist.`, 'Please enter the correct username.');
+      this.commonService.showAlert(
+        'Oppsss...',
+        `Your username doesn't exist.`,
+        'Please enter the correct username.'
+      );
     }
     return res;
   }
 
   register(username: string, fullName: string, avatar: string) {
     // tslint:disable-next-line: max-line-length
-    (this.users === null) ? this.users = [{username, fullName, avatar, history: [], trophy: 0}] : this.users.push({username, fullName, avatar, history: [], trophy: 0});
+    this.users === null
+      ? (this.users = [{ username, fullName, avatar, history: [], trophy: 0 }])
+      : this.users.push({ username, fullName, avatar, history: [], trophy: 0 });
     this.storage.set('users', this.users);
     this.currentUser = this.getCurrentUser(username);
     this.saveCurrentUser();
@@ -60,14 +68,18 @@ export class AuthService {
 
   async isUserExist(username: string): Promise<boolean> {
     // tslint:disable-next-line: no-unused-expression
-    this.users = (this.users === null) ? await this.getUsers() : this.users;
-    return (this.users === null) ? false : (this.users.find(u => u.username === username)) ? true : false;
+    this.users = this.users === null ? await this.getUsers() : this.users;
+    return this.users === null
+      ? false
+      : this.users.find(u => u.username === username)
+      ? true
+      : false;
   }
 
   async getAvatars(): Promise<Avatar[]> {
     if (this.avatars === null) {
       const res = await fetch('assets/avatars/avatars.json');
-      const data =  await res.json();
+      const data = await res.json();
       this.avatars = data.avatar;
     }
     return this.avatars;
@@ -76,11 +88,30 @@ export class AuthService {
   checkToken() {
     return this.storage.get('auth-token').then(res => {
       if (res) {
-        this.commonService.showToast('Preparing data...');
-        this.currentUser = res;
-        this.authState.next(true);
+        this.confirmationSameUser(res);
       }
     });
+  }
+
+  async confirmationSameUser(user: User) {
+    const modal = await this.modalController.create({
+      component: ContinueLoginPage,
+      backdropDismiss: false,
+      componentProps: {
+        user
+      }
+    });
+    modal.onDidDismiss().then((detail) => {
+      (detail.data) ? this.continueLogin(user) : this.logout();
+    })
+    .catch((err) => console.log(err.message));
+    return await modal.present();
+  }
+
+  continueLogin(user: User) {
+    this.commonService.showToast('Preparing data...');
+    this.currentUser = user;
+    this.authState.next(true);
   }
 
   isAuthenticated() {
@@ -93,12 +124,12 @@ export class AuthService {
   }
 
   writeJsonStorage() {
-    let obj = {
+    const object = {
       table: []
     };
-    obj.table.push({id: 1, square: 2});
-    const json = JSON.stringify(obj);
-    const blob = new Blob([json], {type : 'application/json'});
+    object.table.push({ id: 1, square: 2 });
+    const json = JSON.stringify(object);
+    const blob = new Blob([json], { type: 'application/json' });
     saveAs(blob, 'abc.json');
   }
 }
