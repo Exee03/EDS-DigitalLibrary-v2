@@ -1,3 +1,5 @@
 export interface Avatar {
-    url: string;
+    name: string;
+    url: Array<string>;
+    credit: string;
 }

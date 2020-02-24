@@ -2,18 +2,32 @@
   <ion-toolbar color="primary">
     <ion-title class="ion-text-center">Select your Avatar</ion-title>
   </ion-toolbar>
+  <ion-row class="ion-justify-content-center">
+    <ion-chip
+      *ngFor="let avatar of avatars"
+      color="primary"
+      mode="ios"
+      outline="true"
+      (click)="updateAvatarUrls(avatar.name)"
+    >
+      <ion-label>{{ avatar.name }}</ion-label>
+    </ion-chip>
+  </ion-row>
 </ion-header>
 
 <ion-content>
   <ion-grid class="ion-no-padding">
     <ion-row class="ion-justify-content-center">
-      <ion-col *ngFor="let a of avatars" size="auto">
-        <ion-card (click)="select(a.url)" style="height: 100px; width: 100px;">
+      <ion-col *ngFor="let url of urlAvatar" size="auto">
+        <ion-card
+          (click)="selectAvatar(url)"
+          style="height: 100px; width: 100px;"
+        >
           <img
-            [src]="a.url"
+            [src]="url"
             height="100%"
             width="100%"
-            [ngStyle]="{'border': avatar == a.url ? '8px solid var(--ion-color-primary)' : '0px'}"
+            [ngStyle]="{'border': avatar == url ? '8px solid var(--ion-color-primary)' : '0px'}"
           />
         </ion-card>
       </ion-col>
@@ -22,7 +36,7 @@
 </ion-content>
 <ion-footer>
   <ion-label class="ion-text-center">
-    <p>Icon made by Smashicons & Freepik from www.flaticon.com</p>
+    <p class="ion-padding">{{ attributionLine }}</p>
   </ion-label>
   <ion-toolbar class="ion-text-center">
     <ion-button (click)="register()" fill="solid" shape="round" color="dark">

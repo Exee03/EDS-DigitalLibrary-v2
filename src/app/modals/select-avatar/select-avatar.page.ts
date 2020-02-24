@@ -13,6 +13,9 @@ export class SelectAvatarPage implements OnInit {
   username = '';
   avatar = '';
   avatars: Avatar[] = null;
+  nameAvatar = '';
+  urlAvatar: Array<string>;
+  attributionLine = '';
 
   constructor(
     private authService: AuthService,
@@ -25,9 +28,18 @@ export class SelectAvatarPage implements OnInit {
     this.fullName = this.navParams.get('fullName');
     this.username = this.navParams.get('username');
     this.avatars = this.navParams.get('avatars');
+    this.nameAvatar = this.avatars[0].name;
+    this.attributionLine = this.avatars[0].credit;
+    this.updateAvatarUrls(this.nameAvatar);
   }
 
-  select(url: string) {
+  updateAvatarUrls(name: string) {
+    this.nameAvatar = name;
+    this.urlAvatar = this.avatars.find((a) => a.name === name).url;
+    this.attributionLine = this.avatars.find((a) => a.name === name).credit;
+  }
+
+  selectAvatar(url: string) {
     this.avatar = url;
   }
 

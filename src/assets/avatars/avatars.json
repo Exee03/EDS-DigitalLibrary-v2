@@ -1,157 +1,132 @@
 {
     "avatar": [
         {
-            "url": "assets/avatars/763689-kitty-avatars/001-kitty-47.png"
+            "name": "Kitty",
+            "credit": "Icon made by Freepik from www.flaticon.com",
+            "url": [
+                "assets/avatars/763689-kitty-avatars/001-kitty-47.png",
+                "assets/avatars/763689-kitty-avatars/002-kitty-46.png",
+                "assets/avatars/763689-kitty-avatars/003-kitty-45.png",
+                "assets/avatars/763689-kitty-avatars/004-idea.png",
+                "assets/avatars/763689-kitty-avatars/005-kitty-44.png",
+                "assets/avatars/763689-kitty-avatars/006-kitty-43.png",
+                "assets/avatars/763689-kitty-avatars/007-kitty-42.png",
+                "assets/avatars/763689-kitty-avatars/008-kitty-41.png",
+                "assets/avatars/763689-kitty-avatars/009-kitty-40.png",
+                "assets/avatars/763689-kitty-avatars/010-kitty-39.png",
+                "assets/avatars/763689-kitty-avatars/011-kitty-38.png",
+                "assets/avatars/763689-kitty-avatars/012-kitty-37.png",
+                "assets/avatars/763689-kitty-avatars/013-kitty-36.png",
+                "assets/avatars/763689-kitty-avatars/014-kitty-35.png",
+                "assets/avatars/763689-kitty-avatars/015-kitty-34.png",
+                "assets/avatars/763689-kitty-avatars/016-kitty-33.png",
+                "assets/avatars/763689-kitty-avatars/017-kitty-32.png",
+                "assets/avatars/763689-kitty-avatars/018-kitty-31.png",
+                "assets/avatars/763689-kitty-avatars/019-kitty-30.png",
+                "assets/avatars/763689-kitty-avatars/020-kitty-29.png",
+                "assets/avatars/763689-kitty-avatars/021-kitty-28.png",
+                "assets/avatars/763689-kitty-avatars/022-kitty-27.png",
+                "assets/avatars/763689-kitty-avatars/023-kitty-26.png",
+                "assets/avatars/763689-kitty-avatars/024-kitty-25.png",
+                "assets/avatars/763689-kitty-avatars/025-kitty-24.png",
+                "assets/avatars/763689-kitty-avatars/026-selfie.png",
+                "assets/avatars/763689-kitty-avatars/027-kitty-23.png",
+                "assets/avatars/763689-kitty-avatars/028-kitty-22.png",
+                "assets/avatars/763689-kitty-avatars/029-kitty-21.png",
+                "assets/avatars/763689-kitty-avatars/030-kitty-20.png",
+                "assets/avatars/763689-kitty-avatars/031-kitty-19.png",
+                "assets/avatars/763689-kitty-avatars/032-kitty-18.png",
+                "assets/avatars/763689-kitty-avatars/033-kitty-17.png",
+                "assets/avatars/763689-kitty-avatars/034-kitty-16.png",
+                "assets/avatars/763689-kitty-avatars/035-kitty-15.png",
+                "assets/avatars/763689-kitty-avatars/036-kitty-14.png",
+                "assets/avatars/763689-kitty-avatars/037-kitty-13.png",
+                "assets/avatars/763689-kitty-avatars/038-kitty-12.png",
+                "assets/avatars/763689-kitty-avatars/039-kitty-11.png",
+                "assets/avatars/763689-kitty-avatars/040-kitty-10.png",
+                "assets/avatars/763689-kitty-avatars/041-kitty-9.png",
+                "assets/avatars/763689-kitty-avatars/042-kitty-8.png",
+                "assets/avatars/763689-kitty-avatars/043-kitty-7.png",
+                "assets/avatars/763689-kitty-avatars/044-kitty-6.png",
+                "assets/avatars/763689-kitty-avatars/045-kitty-5.png",
+                "assets/avatars/763689-kitty-avatars/046-kitty-4.png",
+                "assets/avatars/763689-kitty-avatars/047-kitty-3.png",
+                "assets/avatars/763689-kitty-avatars/048-kitty-2.png",
+                "assets/avatars/763689-kitty-avatars/049-kitty-1.png",
+                "assets/avatars/763689-kitty-avatars/050-kitty.png"
+            ]
         },
         {
-            "url": "assets/avatars/763689-kitty-avatars/002-kitty-46.png"
+            "name": "Superhero",
+            "credit": "Icon made by surang from www.flaticon.com",
+            "url": [
+                "assets/avatars/1487226-superhero-avatars/001-superhero.png",
+                "assets/avatars/1487226-superhero-avatars/002-superhero-1.png",
+                "assets/avatars/1487226-superhero-avatars/003-superhero-2.png",
+                "assets/avatars/1487226-superhero-avatars/004-superhero-3.png",
+                "assets/avatars/1487226-superhero-avatars/005-superhero-4.png",
+                "assets/avatars/1487226-superhero-avatars/006-superhero-5.png",
+                "assets/avatars/1487226-superhero-avatars/007-superhero-6.png",
+                "assets/avatars/1487226-superhero-avatars/008-superhero-7.png",
+                "assets/avatars/1487226-superhero-avatars/009-superhero-8.png",
+                "assets/avatars/1487226-superhero-avatars/010-superhero-9.png",
+                "assets/avatars/1487226-superhero-avatars/011-superhero-10.png",
+                "assets/avatars/1487226-superhero-avatars/012-superhero-11.png",
+                "assets/avatars/1487226-superhero-avatars/013-superhero-12.png",
+                "assets/avatars/1487226-superhero-avatars/014-superhero-13.png",
+                "assets/avatars/1487226-superhero-avatars/015-superhero-14.png",
+                "assets/avatars/1487226-superhero-avatars/016-superhero-15.png",
+                "assets/avatars/1487226-superhero-avatars/017-superhero-16.png",
+                "assets/avatars/1487226-superhero-avatars/018-superhero-17.png",
+                "assets/avatars/1487226-superhero-avatars/019-superhero-18.png",
+                "assets/avatars/1487226-superhero-avatars/020-superhero-19.png",
+                "assets/avatars/1487226-superhero-avatars/021-superhero-20.png",
+                "assets/avatars/1487226-superhero-avatars/022-superhero-21.png",
+                "assets/avatars/1487226-superhero-avatars/023-superhero-22.png",
+                "assets/avatars/1487226-superhero-avatars/024-superhero-23.png",
+                "assets/avatars/1487226-superhero-avatars/025-superhero-24.png",
+                "assets/avatars/1487226-superhero-avatars/026-superhero-25.png",
+                "assets/avatars/1487226-superhero-avatars/027-superhero-26.png",
+                "assets/avatars/1487226-superhero-avatars/028-superhero-27.png",
+                "assets/avatars/1487226-superhero-avatars/029-superhero-28.png",
+                "assets/avatars/1487226-superhero-avatars/030-superhero-29.png"
+            ]
         },
         {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/004-idea.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/005-kitty-44.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/006-kitty-43.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/007-kitty-42.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/008-kitty-41.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/009-kitty-40.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/010-kitty-39.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/011-kitty-38.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/012-kitty-37.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/013-kitty-36.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
-        },
-        {
-            "url": "assets/avatars/763689-kitty-avatars/003-kitty-45.png"
+            "name": "Monsters",
+            "credit": "Icon made by Smashicons from www.flaticon.com",
+            "url": [
+                "assets/avatars/826530-monsters/001-monster-27.png",
+                "assets/avatars/826530-monsters/002-monster-26.png",
+                "assets/avatars/826530-monsters/003-monster-25.png",
+                "assets/avatars/826530-monsters/004-monster-24.png",
+                "assets/avatars/826530-monsters/005-monster-23.png",
+                "assets/avatars/826530-monsters/006-monster-22.png",
+                "assets/avatars/826530-monsters/007-monster-21.png",
+                "assets/avatars/826530-monsters/008-monster-20.png",
+                "assets/avatars/826530-monsters/009-monster-19.png",
+                "assets/avatars/826530-monsters/010-monster-18.png",
+                "assets/avatars/826530-monsters/011-monster-17.png",
+                "assets/avatars/826530-monsters/012-monster-16.png",
+                "assets/avatars/826530-monsters/013-monster-15.png",
+                "assets/avatars/826530-monsters/014-monster-14.png",
+                "assets/avatars/826530-monsters/015-monster-13.png",
+                "assets/avatars/826530-monsters/016-monster-12.png",
+                "assets/avatars/826530-monsters/017-monster-11.png",
+                "assets/avatars/826530-monsters/018-monster-10.png",
+                "assets/avatars/826530-monsters/019-monster-9.png",
+                "assets/avatars/826530-monsters/020-monster-8.png",
+                "assets/avatars/826530-monsters/021-monster-7.png",
+                "assets/avatars/826530-monsters/022-monster-6.png",
+                "assets/avatars/826530-monsters/023-monster-5.png",
+                "assets/avatars/826530-monsters/024-monster-4.png",
+                "assets/avatars/826530-monsters/025-monster-3.png",
+                "assets/avatars/826530-monsters/026-gargoyle.png",
+                "assets/avatars/826530-monsters/027-monster-2.png",
+                "assets/avatars/826530-monsters/028-monster-1.png",
+                "assets/avatars/826530-monsters/029-monster.png",
+                "assets/avatars/826530-monsters/030-cyclops.png"
+            ]
         }
     ]
 }
