@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, NavParams } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,14 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./setting-popover.page.scss'],
 })
 export class SettingPopoverPage implements OnInit {
+  page: string;
 
   constructor(
     private authService: AuthService,
     private popoverController: PopoverController,
-    private router: Router
+    private router: Router,
+    private navParams: NavParams,
   ) { }
 
   ngOnInit() {
+    this.page = this.navParams.get('page');
   }
 
   profile() {

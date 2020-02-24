@@ -70,8 +70,8 @@ export class HomePage implements OnInit {
   async settingsPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: SettingPopoverPage,
-      event: ev
-      // componentProps: { page: 'Login' },
+      event: ev,
+      componentProps: { page: 'home' },
       // cssClass: 'popover_class',
     });
 

@@ -1,5 +1,5 @@
 <ion-list>
-  <ion-item button (click)="profile()">
+  <ion-item button (click)="profile()" *ngIf="page != 'profile'">
     <ion-label style="font-size: small; font-weight: bold;">PROFILE</ion-label>
   </ion-item>
   <ion-item button (click)="settings()">
