@@ -16,7 +16,7 @@
                 <ion-col class="ion-align-self-end">
                   <ion-title
                     style="font-size: 70px; font-weight: bold;"
-                    [color]="card.type"
+                    [color]="card.category"
                     >{{card.title}}</ion-title
                   >
                 </ion-col>
@@ -28,7 +28,7 @@
           <ion-buttons>
             <ion-button (click)="close()">
               <ion-icon
-                [color]="card.type"
+                [color]="card.category"
                 slot="icon-only"
                 name="close"
               ></ion-icon>
@@ -41,7 +41,7 @@
 </ion-header>
 
 <ion-content *ngIf="contents.length != 0">
-  <ion-card *ngFor="let content of contents" (click)="onClick(content)" [color]="card.type">
+  <ion-card *ngFor="let content of contents" (click)="onClick(content)" [color]="card.category">
     <ion-grid style="padding: unset; margin: unset;">
       <ion-row style="padding: unset; margin: unset;">
         <ion-col size="8">

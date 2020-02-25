@@ -9,8 +9,8 @@
           </ion-buttons>
         </ion-col>
         <ion-col>
-          <ion-item lines="none" class="ion-padding">
-            <ion-avatar slot="start">
+          <ion-item lines="none" class="ion-padding-top">
+            <ion-avatar slot="start" style="height: 70px; width: 70px;">
               <img [src]="user.avatar" />
             </ion-avatar>
             <ion-title>Hi {{user.username}}!</ion-title>
@@ -51,7 +51,7 @@
           <img [src]="card.picture" />
           <ion-card-header>
             <ion-card-title
-              [color]="card.type"
+              [color]="card.category"
               style="font-size: 35px; font-weight: bold;"
               >{{ card.title }}</ion-card-title
             >
@@ -76,7 +76,7 @@
 
     <ion-card
       *ngFor="let content of contents | title: textFilter"
-      [color]="content.type"
+      [color]="content.category"
       (click)="openContent(content)"
     >
       <ion-grid style="padding: unset; margin: unset;">

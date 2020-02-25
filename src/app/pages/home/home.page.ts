@@ -7,7 +7,6 @@ import { ContentService } from 'src/app/services/content.service';
 import { Content } from 'src/app/models/content';
 import { ContentViewerPage } from 'src/app/modals/content-viewer/content-viewer.page';
 import { User } from 'src/app/models/user';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -20,17 +19,17 @@ export class HomePage implements OnInit {
   cards: Card[] = [
     {
       title: 'Graphic Book',
-      type: 'graphic-book',
+      category: 'graphic-book',
       picture: '../../../assets/images/graphic-book.png'
     },
     {
       title: 'E-Book',
-      type: 'e-book',
+      category: 'e-book',
       picture: '../../../assets/images/e-book.png'
     },
     {
       title: 'Games',
-      type: 'games',
+      category: 'games',
       picture: '../../../assets/images/game.png'
     }
   ];
@@ -38,12 +37,14 @@ export class HomePage implements OnInit {
   contents: Content[] = [];
 
   constructor(
-    private authService: AuthService,
     private contentService: ContentService,
     private modalController: ModalController,
     private popoverController: PopoverController
   ) {
-    this.user = this.authService.currentUser;
+    this.contentService.currentUser.subscribe(user => {
+      this.user = user;
+      this.user.trophy = Math.round(this.user.trophy);
+    });
   }
 
   async ngOnInit() {
@@ -97,7 +98,7 @@ export class HomePage implements OnInit {
 
   //     };
   //     reader.readAsDataURL(event.target.files[0]);
-  //     // const tmppath = URL.createObjectURL(event.target.files[0]);
+  //     // const tmpPath = URL.createObjectURL(event.target.files[0]);
   //     console.log(event.target.files[0]);
 
 

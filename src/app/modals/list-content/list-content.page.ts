@@ -12,9 +12,8 @@ import { ContentViewerPage } from '../content-viewer/content-viewer.page';
 })
 export class ListContentPage implements OnInit {
   card: Card;
-  // tslint:disable-next-line: max-line-length
-  items = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado', 'Bombasto', 'Magneta', 'Tornado', 'Bombasto', 'Magneta', 'Tornado', 'Bombasto', 'Magneta', 'Tornado', 'Bombasto', 'Magneta', 'Tornado', 'Bombasto', 'Magneta', 'Tornado', 'Bombasto', 'Magneta', 'Tornado'];
   contents: Content[] = [];
+
   constructor(
     private contentService: ContentService,
     private modalController: ModalController,
@@ -23,7 +22,7 @@ export class ListContentPage implements OnInit {
 
   async ngOnInit() {
     this.card = this.navParams.get('card');
-    this.contents = await this.contentService.getContents(this.card.type);
+    this.contents = await this.contentService.getContents(this.card.category);
   }
 
   async onClick(content: Content) {

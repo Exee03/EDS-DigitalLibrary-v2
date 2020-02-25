@@ -1,7 +1,7 @@
 export interface Content {
     title: string;
     desc: string;
-    type: string;
+    category: string;
     lastAdded: string;
     id: string;
     url: string;
