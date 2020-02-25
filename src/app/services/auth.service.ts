@@ -7,6 +7,7 @@ import { User } from '../models/user';
 import { Platform, ModalController } from '@ionic/angular';
 import { Avatar } from '../models/avatar';
 import { ContinueLoginPage } from '../modals/continue-login/continue-login.page';
+import { ContentService } from './content.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class AuthService {
   constructor(
     private storage: Storage,
     private commonService: CommonService,
+    private contentService: ContentService,
     private platform: Platform,
     private modalController: ModalController
   ) {
@@ -64,6 +66,7 @@ export class AuthService {
 
   saveCurrentUser() {
     this.storage.set('auth-token', this.currentUser);
+    this.contentService.currentUser.next(this.currentUser);
   }
 
   async isUserExist(username: string): Promise<boolean> {
@@ -111,6 +114,7 @@ export class AuthService {
   continueLogin(user: User) {
     this.commonService.showToast('Preparing data...');
     this.currentUser = user;
+    this.contentService.currentUser.next(user);
     this.authState.next(true);
   }
 

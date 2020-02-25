@@ -10,4 +10,6 @@ export interface History {
     category: string;
     id: string;
     date: string;
+    point: number;
+    duration: number;
 }

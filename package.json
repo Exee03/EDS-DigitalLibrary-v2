@@ -25,6 +25,7 @@
     "@ionic/angular": "^4.7.1",
     "@ionic/storage": "^2.2.0",
     "bfj": "^7.0.2",
+    "chart.js": "^2.9.3",
     "core-js": "^2.5.4",
     "file-saver": "^2.0.2",
     "fs": "0.0.1-security",
