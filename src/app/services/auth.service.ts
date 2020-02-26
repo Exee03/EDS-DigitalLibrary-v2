@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { CommonService } from './common.service';
 import { Storage } from '@ionic/storage';
 import { saveAs } from 'file-saver';
-import { User } from '../models/user';
+import { User, RoleType } from '../models/user';
 import { Platform, ModalController } from '@ionic/angular';
 import { Avatar } from '../models/avatar';
 import { ContinueLoginPage } from '../modals/continue-login/continue-login.page';
@@ -48,8 +48,8 @@ export class AuthService {
   register(username: string, fullName: string, avatar: string) {
     // tslint:disable-next-line: max-line-length
     this.users === null
-      ? (this.users = [{ username, fullName, avatar, history: [], trophy: 0 }])
-      : this.users.push({ username, fullName, avatar, history: [], trophy: 0 });
+      ? (this.users = [{ username, fullName, avatar, history: [], trophy: 0, role: RoleType.Student }])
+      : this.users.push({ username, fullName, avatar, history: [], trophy: 0, role: RoleType.Student });
     this.storage.set('users', this.users);
     this.currentUser = this.getCurrentUser(username);
     this.saveCurrentUser();
@@ -57,7 +57,9 @@ export class AuthService {
   }
 
   async getUsers(): Promise<User[]> {
-    return await this.storage.get('users');
+    // tslint:disable-next-line: no-unused-expression
+    (this.users === null || this.users.length === 0) ? this.users = await this.storage.get('users') : null;
+    return this.users;
   }
 
   getCurrentUser(username: string): User {

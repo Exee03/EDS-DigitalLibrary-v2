@@ -5,5 +5,17 @@
 </ion-header>
 
 <ion-content>
+<ion-list *ngIf="currentUser.role == 1">
+  <ion-item *ngFor="let user of users">
+    <ion-avatar slot="start" style="width: 80px; height: 80px;">
+      <img [src]="user.avatar" />
+    </ion-avatar>
+    <ion-label>
+      <h2 >{{ user.username }}</h2>
+      <h3>{{ user.fullName }}</h3>
+      <p>{{ user.trophy }} trophy</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
 
 </ion-content>
