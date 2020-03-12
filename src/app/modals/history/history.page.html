@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>History</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-start" style="padding-left: 5%; padding-right: 10%;"
+      *ngIf="historyContent != null">
+      <ion-list style="width: 100%;" *ngIf="historyContent.length != 0">
+        <ion-item *ngFor="let history of userHistory | reverse; let i = index">
+          <ion-avatar slot="start">
+            <img *ngIf="history.category == 'graphic-book'" src="assets/images/graphic-book.png">
+            <img *ngIf="history.category == 'e-book'" src="assets/images/e-book.png">
+            <img *ngIf="history.category == 'games'" src="assets/images/game.png">
+          </ion-avatar>
+          <ion-label>
+            <h2 *ngIf="history.category == 'games'">You play {{ historyContent[i].title }}</h2>
+            <h2 *ngIf="history.category != 'games'">You read {{ historyContent[i].title }}</h2>
+            <h3>At {{ history.date }}</h3>
+            <p>Gain {{ history.point }} points!</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-row>
+  </ion-grid>
+</ion-content>

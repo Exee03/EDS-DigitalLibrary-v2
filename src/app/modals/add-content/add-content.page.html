@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Add Content</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="start" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="ion-padding">
+    <ion-row class="ion-justify-content-center">
+      <ion-img style="width: 50%; height: 50%;" src="assets/images/add_content.png"></ion-img>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Title</ion-label>
+          <ion-input type="text" [(ngModel)]="title"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea type="text" auto-grow="true" [(ngModel)]="desc"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col>
+        <ion-item>
+          <ion-label>Category</ion-label>
+          <ion-select placeholder="Select One..." [(ngModel)]="category">
+            <ion-select-option value="graphic-book">Graphic Book</ion-select-option>
+            <ion-select-option value="e-book">E-Book</ion-select-option>
+            <!-- <ion-select-option value="games">Games</ion-select-option> -->
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <!-- <ion-label>Path</ion-label>
+          <ion-label style="text-align: end;"> <p>Location of the content...</p> </ion-label> -->
+          <input type="file" (change)="getPath($event)" >
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar class="ion-text-center">
+    <ion-button (click)="addContent()" fill="solid" shape="round" color="dark">
+      ADD
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

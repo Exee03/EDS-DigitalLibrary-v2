@@ -16,6 +16,7 @@ export class SelectAvatarPage implements OnInit {
   nameAvatar = '';
   urlAvatar: Array<string>;
   attributionLine = '';
+  isRegister = false;
 
   constructor(
     private authService: AuthService,
@@ -28,6 +29,7 @@ export class SelectAvatarPage implements OnInit {
     this.fullName = this.navParams.get('fullName');
     this.username = this.navParams.get('username');
     this.avatars = this.navParams.get('avatars');
+    this.isRegister = this.navParams.get('isRegister');
     this.nameAvatar = this.avatars[0].name;
     this.attributionLine = this.avatars[0].credit;
     this.updateAvatarUrls(this.nameAvatar);
@@ -43,10 +45,15 @@ export class SelectAvatarPage implements OnInit {
     this.avatar = url;
   }
 
-  register() {
+  saveAvatar() {
     if (this.avatar !== '') {
-      this.authService.register(this.username, this.fullName, this.avatar);
-      this.close();
+      if (this.isRegister) {
+        this.authService.register(this.username, this.fullName, this.avatar);
+        this.close();
+      } else {
+        this.authService.updateAvatar(this.avatar);
+        this.close();
+      }
     }
   }
 

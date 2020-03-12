@@ -3,35 +3,23 @@
     <ion-grid class="ion-no-padding">
       <ion-row>
         <ion-col>
-          <ion-card
-            class="ion-no-margin"
-            style="box-shadow: none !important; height: 200px !important;"
-            [style.backgroundImage]="'url(' + card.picture + ')'"
-            [style.backgroundSize]="'40%'"
-            [style.backgroundPosition]="'right center'"
-            [style.backgroundRepeat]="'no-repeat'"
-          >
+          <ion-card class="ion-no-margin" style="box-shadow: none !important; height: 200px !important;"
+            [style.backgroundImage]="'url(' + card.picture + ')'" [style.backgroundSize]="'40%'"
+            [style.backgroundPosition]="'right center'" [style.backgroundRepeat]="'no-repeat'">
             <ion-grid style="height: 100%;">
               <ion-row style="height: 100%;">
                 <ion-col class="ion-align-self-end">
-                  <ion-title
-                    style="font-size: 70px; font-weight: bold;"
-                    [color]="card.category"
-                    >{{card.title}}</ion-title
-                  >
+                  <ion-title style="font-size: 70px; font-weight: bold;" [color]="card.category">{{card.title}}
+                  </ion-title>
                 </ion-col>
               </ion-row>
             </ion-grid>
-          </ion-card></ion-col
-        >
+          </ion-card>
+        </ion-col>
         <ion-col size="auto" class="ion-align-items-end">
           <ion-buttons>
             <ion-button (click)="close()">
-              <ion-icon
-                [color]="card.category"
-                slot="icon-only"
-                name="close"
-              ></ion-icon>
+              <ion-icon [color]="card.category" slot="icon-only" name="close"></ion-icon>
             </ion-button>
           </ion-buttons>
         </ion-col>
@@ -41,47 +29,39 @@
 </ion-header>
 
 <ion-content *ngIf="contents.length != 0">
-  <ion-card *ngFor="let content of contents" (click)="onClick(content)" [color]="card.category">
-    <ion-grid style="padding: unset; margin: unset;">
+  <ion-card style="margin: 20px" *ngFor="let content of contents; let i = index" (click)="openContent(content)" [color]="card.category">
+    <ion-grid style="padding: unset; margin: unset; width: 100%;">
       <ion-row style="padding: unset; margin: unset;">
-        <ion-col size="8">
+        <ion-col *ngIf="content.category == 'e-book'" class="ion-padding" style="text-align: end;" size="auto">
+          <div id="{{ 'pdf-viewer-' + content.id }}"></div>
+        </ion-col>
+        <ion-col *ngIf="content.category == 'graphic-book'" class="ion-padding" style="text-align: end;" size="auto">
+          <ion-content class="preview">
+            <div style="zoom: 0.5;" [innerHTML]="html[i] | safe: 'html'"></div>
+          </ion-content>
+        </ion-col>
+        <ion-col size="6">
           <ion-card-header>
             <ion-card-title>{{content.title}}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            
             {{content.desc}}
           </ion-card-content>
         </ion-col>
-        <ion-col class="ion-align-self-center" size="2">
-          <div style="height: 100%; width: 100%; text-align: right; pointer-events:none" [innerHTML]="content.url | safe: 'urlToHtml'"></div>
-        </ion-col>
       </ion-row>
     </ion-grid>
-    
+
   </ion-card>
 </ion-content>
 
 <ion-content *ngIf="contents.length == 0">
   <ion-grid>
-    <ion-row
-      class="ion-align-items-center ion-justify-content-center"
-      style="height: 100%"
-    >
-      <ion-label
-        position="floating"
-        style="text-align: center; font-size: x-large;"
-        >Oh no! <br />
-        There are no {{card.title}}.</ion-label
-      >
+    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+      <ion-label position="floating" style="text-align: center; font-size: x-large;">Oh no! <br />
+        There are no {{card.title}}.</ion-label>
     </ion-row>
-    <ion-row
-      class="ion-align-items-center ion-justify-content-center"
-    >
-      <ion-img
-        src="../../../assets/images/error.png"
-        style="height: 50vh; padding-top: 10vh;"
-      ></ion-img>
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <ion-img src="assets/images/error.png" style="height: 50vh; padding-top: 10vh;"></ion-img>
     </ion-row>
   </ion-grid>
 </ion-content>

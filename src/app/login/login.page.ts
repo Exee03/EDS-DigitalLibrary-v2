@@ -25,7 +25,16 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    (await this.authService.login(this.username)) ? this.username = '' : this.username = this.username;
+    (this.password !== '')
+      ? (await this.authService.loginAsAdmin(this.username, this.password)) ? this.reset() : null
+      : (await this.authService.login(this.username)) ? this.reset() : null;
+  }
+
+  reset() {
+    this.isRegister = false;
+    this.username = '';
+    this.password = '';
+    this.fullName = '';
   }
 
   changeForm() {
@@ -45,17 +54,19 @@ export class LoginPage implements OnInit {
           componentProps: {
             username: this.username,
             fullName: this.commonService.capitalize(this.fullName),
-            avatars
+            avatars,
+            isRegister: true
           }
         });
+        this.reset();
         return await modal.present();
       } else {
         // tslint:disable-next-line: max-line-length
         this.commonService.showAlert('Oh no!', 'Your nickname is already taken.', 'Please enter different with this ' + this.username + '.');
       }
     } else {
-        // tslint:disable-next-line: max-line-length
-        this.commonService.showAlert('Hey!', 'They are some question is not answered.', 'Please answer all the questions.');
+      // tslint:disable-next-line: max-line-length
+      this.commonService.showAlert('Hey!', 'They are some question is not answered.', 'Please answer all the questions.');
     }
   }
 

@@ -8,5 +8,19 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<div style="height: 100%; width: 100%;" [innerHTML]="html | safe: 'html'"></div>
+<!-- <ion-content>
+  <a href="assets\contents\graphic-books\absulum\index.html" target="test1" id="book1"><img
+      src="assets\contents\graphic-books\absulum\sickrd.gif"></a>
+  <div class="frame">
+    <iframe src="assets\images\background.jpg" width="87%" height="100%" name="test1" id="test1"></iframe>
+  </div>
+</ion-content> -->
+<!-- <div style="height: 100%; width: 100%;" [innerHTML]="html | safe: 'html'"></div> -->
+<div *ngIf="content.category == 'games'" style="height: 100%; width: 100%;" [innerHTML]="content.url | safe: 'urlToHtml'"></div>
+<ion-content *ngIf="content.category == 'e-book'" >
+  <div id="pdf-viewer"></div>
+</ion-content>
+<ion-content *ngIf="content.category == 'graphic-book'">
+  <div style="zoom: 1.5;" [innerHTML]="html | safe: 'html'"></div>
+</ion-content>
+<!-- <div id="my-target-element"></div> -->

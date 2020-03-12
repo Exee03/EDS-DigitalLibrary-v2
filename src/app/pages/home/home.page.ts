@@ -20,18 +20,18 @@ export class HomePage implements OnInit {
     {
       title: 'Graphic Book',
       category: 'graphic-book',
-      picture: '../../../assets/images/graphic-book.png'
+      picture: 'assets/images/graphic-book.png'
     },
     {
       title: 'E-Book',
       category: 'e-book',
-      picture: '../../../assets/images/e-book.png'
+      picture: 'assets/images/e-book.png'
     },
-    {
-      title: 'Games',
-      category: 'games',
-      picture: '../../../assets/images/game.png'
-    }
+    // {
+    //   title: 'Games',
+    //   category: 'games',
+    //   picture: 'assets/images/game.png'
+    // }
   ];
 
   contents: Content[] = [];
@@ -48,7 +48,7 @@ export class HomePage implements OnInit {
   }
 
   async ngOnInit() {
-    this.contents = await this.contentService.fetchContents();
+    this.contents = await this.contentService.getContents();
   }
 
   onSearchChange(event) {
@@ -85,24 +85,6 @@ export class HomePage implements OnInit {
 
   // syncTasks(a) {
   //   console.log(a);
-  // }
-
-  // onFileSelected(event: any) {
-  //   if (event.target.files && event.target.files[0]) {
-  //     const reader = new FileReader();
-  //     // tslint:disable-next-line: no-shadowed-variable
-  //     reader.onload = (event: any) => {
-  //       const file = event.target.result;
-  //       // console.log(file);
-  //       this.contentService.saveContent(event.target.files[0].name, file);
-
-  //     };
-  //     reader.readAsDataURL(event.target.files[0]);
-  //     // const tmpPath = URL.createObjectURL(event.target.files[0]);
-  //     console.log(event.target.files[0]);
-
-
-  //   }
   // }
 
   async openContent(content: Content) {

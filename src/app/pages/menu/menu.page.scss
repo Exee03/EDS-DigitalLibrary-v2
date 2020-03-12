@@ -11,6 +11,12 @@
   flex-grow: 95;
 }
 
-ion-menu{
+ion-menu {
   --width: 104px;
+}
+
+ion-header {
+  &.header-md:after {
+    background: none;
+  }
 }

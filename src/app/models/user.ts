@@ -4,7 +4,8 @@ export interface User {
     avatar: string;
     history: History[];
     trophy: number;
-    role: RoleType;
+    isAdmin: boolean;
+    password: string;
 }
 
 export interface History {
@@ -13,9 +14,4 @@ export interface History {
     date: string;
     point: number;
     duration: number;
-}
-
-export enum RoleType {
-    Admin,
-    Student
 }

@@ -1,7 +1,7 @@
 <ion-split-pane contentId="menu-content">
   <!--  our side menu  -->
   <ion-menu contentId="menu-content">
-    <ion-header no-border>
+    <ion-header  >
       <ion-toolbar color="primary" class="ion-padding-bottom" style="padding-top: 10px;">
         <ion-label style="text-align: center;"><h1>
           Digital
@@ -18,16 +18,6 @@
           *ngFor="let item of menu"
           color="primary"
         >
-          <!-- <ion-item
-            routerDirection="root"
-            [routerLink]="item.url"
-            [ngStyle]="{'border-left': selectedPath == item.url ? '8px solid var(--ion-color-primary)' : '0px'}"
-            lines="none"
-          >
-            <ion-icon [name]="item.icon" slot="start" style="zoom: 1;"></ion-icon>
-            <ion-label>{{ item.title }}</ion-label>
-          </ion-item
-          > -->
           <ion-item
             routerDirection="root"
             [routerLink]="item.url"

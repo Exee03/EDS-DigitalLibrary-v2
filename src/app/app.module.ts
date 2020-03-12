@@ -9,12 +9,14 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage';
-import { RegisterPageModule } from './modals/register/register.module';
 import { ContentViewerPageModule } from './modals/content-viewer/content-viewer.module';
 import { SettingPopoverPageModule } from './components/setting-popover/setting-popover.module';
 import { ListContentPageModule } from './modals/list-content/list-content.module';
 import { SelectAvatarPageModule } from './modals/select-avatar/select-avatar.module';
 import { ContinueLoginPageModule } from './modals/continue-login/continue-login.module';
+import { AddContentPageModule } from './modals/add-content/add-content.module';
+import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
+import { HistoryPageModule } from './modals/history/history.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,16 +26,18 @@ import { ContinueLoginPageModule } from './modals/continue-login/continue-login.
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
-    RegisterPageModule,
     ContentViewerPageModule,
     SettingPopoverPageModule,
     ListContentPageModule,
     SelectAvatarPageModule,
-    ContinueLoginPageModule
+    ContinueLoginPageModule,
+    AddContentPageModule,
+    HistoryPageModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    DocumentViewer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

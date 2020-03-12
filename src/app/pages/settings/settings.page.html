@@ -1,21 +1,247 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>settings</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-<ion-list *ngIf="currentUser.role == 1">
-  <ion-item *ngFor="let user of users">
-    <ion-avatar slot="start" style="width: 80px; height: 80px;">
-      <img [src]="user.avatar" />
-    </ion-avatar>
-    <ion-label>
-      <h2 >{{ user.username }}</h2>
-      <h3>{{ user.fullName }}</h3>
-      <p>{{ user.trophy }} trophy</p>
-    </ion-label>
-  </ion-item>
-</ion-list>
+  <ion-grid>
+    <ion-row class="ion-align-items-start ion-justify-content-center">
+      <ion-col size="auto">
+        <ion-toolbar *ngIf="currentUser.isAdmin" style="width: 500px;">
+        <!-- <ion-toolbar style="width: 500px;"> -->
+          <ion-segment (ionChange)="formSegment($event)" mode="ios" value="profile">
+            <ion-segment-button value="profile">
+              <ion-icon name="person"></ion-icon>
+              <ion-label>Profile</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="settings">
+              <ion-icon name="build"></ion-icon>
+              <ion-label>App Settings</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="users">
+              <ion-icon name="people"></ion-icon>
+              <ion-label>Users</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="contents">
+              <ion-icon name="library"></ion-icon>
+              <ion-label>Contents</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-start ion-justify-content-center">
+      <ion-col size="auto">
+        <div *ngIf="form == 'profile'">
+          <ion-card *ngIf="!isEditProfile" color="primary" style="width: 300px;">
+            <ion-card-header style="text-align: end;">
+              <ion-chip outline="true" color="dark" (click)="changeFormProfile()">
+                <ion-icon name="pencil"></ion-icon>
+                <ion-label>Edit</ion-label>
+              </ion-chip>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row class="ion-align-items-start ion-justify-content-center ion-padding">
+                  <ion-avatar style="background-color: whitesmoke; width: 150px; height: 150px;">
+                    <img [src]="currentUser.avatar">
+                  </ion-avatar>
+                </ion-row>
+                <ion-row class="ion-align-items-start ion-justify-content-start ion-padding">
+                  <ion-text>
+                    <p>Nickname</p>
+                    <h1> {{currentUser.username}} </h1>
+                  </ion-text>
+                </ion-row>
+                <ion-row class="ion-align-items-start ion-justify-content-start ion-padding">
+                  <ion-text>
+                    <p> Full name </p>
+                    <h1> {{currentUser.fullName}} </h1>
+                  </ion-text>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
 
+          <ion-card *ngIf="isEditProfile" color="primary" style="width: 300px;">
+            <ion-card-header style="text-align: end;">
+              <ion-chip outline="true" color="dark" (click)="changeFormProfile()">
+                <ion-icon name="close-circle"></ion-icon>
+                <ion-label>Cancel</ion-label>
+              </ion-chip>
+              <ion-chip outline="true" color="dark" (click)="saveProfile()">
+                <ion-icon name="save"></ion-icon>
+                <ion-label>Save</ion-label>
+              </ion-chip>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row class="ion-align-items-start ion-justify-content-center ">
+                  <ion-avatar style="background-color: whitesmoke; width: 150px; height: 150px;"
+                    (click)="changeAvatar()">
+                    <img [src]="currentUser.avatar">
+                  </ion-avatar>
+                </ion-row>
+                <ion-row class="ion-align-items-start ion-justify-content-center ion-padding">
+                  <ion-label> Change avatar </ion-label>
+                </ion-row>
+                <ion-row class="ion-align-items-start ion-justify-content-center ion-padding">
+                  <ion-item>
+                    <ion-label position="floating">Nickname</ion-label>
+                    <ion-input type="text" [(ngModel)]="currentUser.username" autocomplete="off" autocorrect="off"
+                      placeholder={{currentUser.username}}></ion-input>
+                  </ion-item>
+                </ion-row>
+                <ion-row class="ion-align-items-start ion-justify-content-center ion-padding">
+                  <ion-item>
+                    <ion-label position="floating">Full name</ion-label>
+                    <ion-input type="text" [(ngModel)]="currentUser.fullName" autocomplete="off" autocorrect="off"
+                      placeholder={{currentUser.fullName}}></ion-input>
+                  </ion-item>
+                </ion-row>
+                <ion-row *ngIf="currentUser.isAdmin"  class="ion-align-items-start ion-justify-content-center ion-padding">
+                  <ion-item>
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input type="text" [(ngModel)]="currentUser.password" autocomplete="off" autocorrect="off"
+                      placeholder={{currentUser.password}}></ion-input>
+                  </ion-item>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+        <div *ngIf="form == 'settings'">
+          <ion-card *ngIf="!isEditSetting" color="primary" style="width: 300px;">
+            <ion-card-header style="text-align: end;">
+              <ion-chip outline="true" color="dark" (click)="changeFormSetting()">
+                <ion-icon name="pencil"></ion-icon>
+                <ion-label>Edit</ion-label>
+              </ion-chip>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row class="ion-align-items-start ion-justify-content-start ion-padding">
+                  <ion-text>
+                    <p>Point for 1 trophy</p>
+                    <h1> {{setting.pointPerTrophy}} </h1>
+                  </ion-text>
+                </ion-row>
+                <ion-row class="ion-align-items-start ion-justify-content-start ion-padding">
+                  <ion-text>
+                    <p>Point for 1 content</p>
+                    <h1> {{setting.pointPerContent}} </h1>
+                  </ion-text>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card *ngIf="isEditSetting" color="primary" style="width: 300px;">
+            <ion-card-header style="text-align: end;">
+              <ion-chip outline="true" color="dark" (click)="changeFormSetting()">
+                <ion-icon name="close-circle"></ion-icon>
+                <ion-label>Cancel</ion-label>
+              </ion-chip>
+              <ion-chip outline="true" color="dark" (click)="saveSetting()">
+                <ion-icon name="save"></ion-icon>
+                <ion-label>Save</ion-label>
+              </ion-chip>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row class="ion-align-items-start ion-justify-content-center ion-padding">
+                  <ion-item>
+                    <ion-label position="floating">Point for 1 trophy</ion-label>
+                    <ion-input type="number" [(ngModel)]="setting.pointPerTrophy"
+                      placeholder={{setting.pointPerTrophy}}></ion-input>
+                  </ion-item>
+                </ion-row>
+                <ion-row class="ion-align-items-start ion-justify-content-center ion-padding">
+                  <ion-item>
+                    <ion-label position="floating">Point for 1 content</ion-label>
+                    <ion-input type="number" [(ngModel)]="setting.pointPerContent"
+                      placeholder={{setting.pointPerContent}}></ion-input>
+                  </ion-item>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+        <div *ngIf="form == 'users'" style="width: 500px;">
+          <ion-list>
+            <ion-item-sliding *ngFor="let user of users">
+              <ion-item>
+                <ion-avatar slot="start" style="width: 80px; height: 80px;">
+                  <img [src]="user.avatar" />
+                </ion-avatar>
+                <ion-label>
+                  <h2>{{ user.username }}</h2>
+                  <h3>{{ user.fullName }}</h3>
+                  <p>{{ user.trophy }} trophy</p>
+                </ion-label>
+              </ion-item>
+              <ion-item-options side="end">
+                <ion-item-option color="danger" (click)="deleteUser(user.username)" expandable>
+                  <ion-icon name="trash" slot="icon-only" ></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </div>
+
+        <div *ngIf="form == 'contents'" style="width: 500px;">
+          <ion-segment (ionChange)="contentsSegment($event)" mode="ios" value="all">
+            <ion-segment-button value="all">
+              <ion-label>All</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="graphic-book">
+              <ion-label>Graphic Book</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="e-book">
+              <ion-label>E-Book</ion-label>
+            </ion-segment-button>
+            <!-- <ion-segment-button value="games">
+              <ion-label>Games</ion-label>
+            </ion-segment-button> -->
+          </ion-segment>
+          <ion-list>
+            <ion-item-sliding *ngFor="let content of contents; let i = index">
+              <ion-item>
+                <ion-label>
+                  <h2>{{ i + 1}}.  {{ content.title }}</h2>
+                  <h3>  {{ content.desc }}</h3>
+                  <p>   {{ content.lastAdded }}</p>
+                </ion-label>
+              </ion-item>
+              <ion-item-options side="end">
+                <ion-item-option color="danger" (click)="deleteContent(content.id)" expandable>
+                  <ion-icon name="trash" slot="icon-only" ></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button  *ngIf="form != 'profile'" color="light" (click)="downloadJson()" class="ion-margin">
+    <ion-icon name="cloud-download-outline"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-button  *ngIf="form != 'profile'" color="light" class="ion-margin">
+    <input
+      (change)="onFileSelected($event)"
+      type="file"
+      name="file"
+      id="file"
+      class="fileInput"
+    />
+    <label for="file"
+      ><ion-icon name="cloud-upload-outline" style="zoom: 2;"></ion-icon
+    ></label>
+  </ion-fab-button>
+  <ion-fab-button  *ngIf="form == 'contents'" (click)="addContent()" class="ion-margin">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

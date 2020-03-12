@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import { LoadingController, AlertController, ToastController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import { Plugins, FilesystemDirectory, FilesystemEncoding, FileWriteResult } from '@capacitor/core';
+const { Filesystem } = Plugins;
+import { saveAs } from 'file-saver';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
+  appPath = 'Digital-Library';
 
   constructor(
     private loadingController: LoadingController,
     private alertController: AlertController,
     private toastController: ToastController,
+    private storage: Storage,
   ) { }
 
   getTime() {
@@ -86,7 +92,7 @@ export class CommonService {
   }
 
   getDayOfWeek(date: string) {
-    return new Date(date).getDay() - 1;
+    return new Date(date).getDay();
   }
 
   checkWeek(date: string) {
@@ -109,10 +115,6 @@ export class CommonService {
     if (dateFormat > firstLast2WeekDay && dateFormat < firstLastWeekDay) { return -1; }
   }
 
-  calculateTrophy(point: number) {
-    return point / 100;
-  }
-
   toHourMin(duration: number) {
     let min = Math.floor(duration / 60);
     let hour = 0;
@@ -127,5 +129,95 @@ export class CommonService {
       min = 0;
     }
     return {hour, min};
+  }
+
+  async readFileHtml(url: string): Promise<string> {
+    try {
+      const res = await fetch(url);
+      const htmlString = await res.text();
+      const path = url.slice(0, -10);
+      var re = /assets/gi;
+      return htmlString.replace(re, path);
+    } catch(e) {
+      console.error('Unable to read file', e);
+    }
+  }
+
+  async getPath(url: string): Promise<string> {
+    try {
+      let file = await Filesystem.getUri({
+        path: url,
+        directory: FilesystemDirectory.Documents,
+      })
+      return file.uri;
+    } catch(e) {
+      console.error('Unable to getUri file', e);
+    }
+  }
+
+  async getFromJson(fileName: string): Promise<any> {
+    try {
+      let path = await this.getPath(this.appPath + '/' + fileName + '.json');
+      const res = await fetch(path);
+      return await res.json();
+    } catch (error) {
+      console.log('Error while getting from json: ', error);
+    }
+  }
+
+  async getFromStorage(fileName: string): Promise<any> {
+    try {
+      return await this.storage.get(fileName);
+    } catch (error) {
+      console.log('Error while getting from storage: ', error);
+    }
+  }
+
+  async saveToJson(fileName: string, data: Object): Promise<FileWriteResult> {
+    try {
+      const json = JSON.stringify(data);
+      return Filesystem.writeFile({
+        path: this.appPath + '/' + fileName + '.json',
+        data: json,
+        directory: FilesystemDirectory.Documents,
+        encoding: FilesystemEncoding.UTF8
+      });
+    } catch (error) {
+      console.log('Error while saving to json: ', error);
+    }
+  }
+
+  saveToStorage(name: string, data: Object): Promise<any> {
+    try {
+      return this.storage.set(name, data);
+    } catch (error) {
+      console.log('Error while saving to storage: ', error);
+    }
+  }
+
+  async fileDelete(path: string) {
+    await Filesystem.deleteFile({
+      path: this.appPath + '/' + path,
+      directory: FilesystemDirectory.Documents
+    });
+  }
+
+  downloadJson(name: string, data: Object) {
+    // const object = {
+    //   table: []
+    // };
+    // object.table.push({ id: 1, square: 2 });
+    const json = JSON.stringify(data);
+    const blob = new Blob([json], { type: 'application/json' });
+    return saveAs(blob, name + '.json');
+  }
+
+  async uploadJson(filePath: string) {
+    try {
+      const res = await fetch(filePath);
+      return await res.json();
+    } catch (error) {
+      console.log('Error while upload from json: ', error);
+    }
   }
 }

@@ -1,7 +1,7 @@
-<ion-header no-border>
+<ion-header>
   <ion-toolbar>
-    
-    <ion-grid  class="ion-no-margin">
+
+    <ion-grid class="ion-no-margin">
       <ion-row>
         <ion-col size="auto">
           <ion-buttons>
@@ -19,7 +19,7 @@
         <ion-col size="auto">
           <ion-item lines="none" (click)="settingsPopover($event)">
             <ion-label>{{user.fullName}}</ion-label>
-            <ion-icon name="arrow-dropdown"></ion-icon>
+            <ion-icon name="caret-down-outline"></ion-icon>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -29,9 +29,56 @@
 
 <ion-content>
   <ion-grid fixed>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="auto">
-        <ion-card color="tertiary">
+
+    <ion-row class="ion-justify-content-end" style="padding-right: 11%;">
+      <ion-chip color="tertiary" (click)="showHistory()" outline="true">
+        <ion-label> Show History </ion-label>
+        <ion-icon name="timer-outline"></ion-icon>
+      </ion-chip>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-toolbar>
+    
+        <ion-grid  class="ion-no-margin">
+          <ion-row>
+            <ion-col size="auto">
+              <ion-buttons>
+                <ion-menu-button></ion-menu-button>
+              </ion-buttons>
+            </ion-col>
+            <ion-col>
+              <ion-item lines="none" class="ion-padding-top">
+                <ion-avatar slot="start" style="height: 100px; width: 100px;">
+                  <img [src]="user.avatar" />
+                </ion-avatar>
+                <ion-title>How your progress, {{user.username}}?</ion-title>
+              </ion-item>
+            </ion-col>
+            <ion-col size="auto">
+              <ion-item lines="none" (click)="settingsPopover($event)">
+                <ion-label>{{user.fullName}}</ion-label>
+                <ion-icon name="caret-down-outline"></ion-icon>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-toolbar>
+    </ion-row> -->
+    <ion-row class="ion-justify-content-center ion-padding">
+      <ion-card color="tertiary" style="width: 80%;">
+        <ion-card-header>
+          <ion-card-title>Reading</ion-card-title>
+          <ion-card-subtitle>Time spent reading</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-label style="font-size: larger; padding: 5px;">{{ durationReading.hour }}</ion-label>
+          <ion-label style="padding: 5px;">hours</ion-label>
+          <ion-label style="font-size: larger; padding: 5px;">{{ durationReading.min }}</ion-label>
+          <ion-label style="padding: 5px;">minutes</ion-label>
+        </ion-card-content>
+      </ion-card>
+      <!-- <ion-col size="auto">
+        <ion-card color="tertiary" style="width: 80%;">
           <ion-card-header>
             <ion-card-title>Reading</ion-card-title>
             <ion-card-subtitle>Time spent reading</ion-card-subtitle>
@@ -40,8 +87,8 @@
             <ion-label style="font-size: larger; padding: 5px;">{{ durationReading.hour }}</ion-label> <ion-label style="padding: 5px;" >hours</ion-label><ion-label style="font-size: larger; padding: 5px;">{{ durationReading.min }}</ion-label> <ion-label style="padding: 5px;">minutes</ion-label>
           </ion-card-content>
         </ion-card>
-      </ion-col>
-      <ion-col size="auto">
+      </ion-col> -->
+      <!-- <ion-col size="auto">
         <ion-card color="tertiary">
           <ion-card-header>
             <ion-card-title>Gaming</ion-card-title>
@@ -51,11 +98,11 @@
             <ion-label style="font-size: larger; padding: 5px;">{{ durationGaming.hour }}</ion-label><ion-label style="padding: 5px;" >hours</ion-label><ion-label style="font-size: larger; padding: 5px;">{{ durationGaming.min }}</ion-label> <ion-label style="padding: 5px;">minutes</ion-label>
           </ion-card-content>
         </ion-card>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
 
     <ion-row class="ion-justify-content-center ion-padding">
-      <ion-card style="width: 80%; height: 25%" >
+      <ion-card style="width: 80%; height: 25%">
         <ion-card-header>
           <ion-card-title>Statistics</ion-card-title>
         </ion-card-header>
@@ -65,28 +112,27 @@
       </ion-card>
     </ion-row>
 
-    <ion-row class="ion-justify-content-start" style="padding-left: 5%; padding-right: 10%;" *ngIf="historyContent.length != 0">
-      <ion-list style="width: 100%;">
+    <!-- <ion-row class="ion-justify-content-start" style="padding-left: 5%; padding-right: 10%;" *ngIf="historyContent != null" >
+      <ion-list style="width: 100%;" *ngIf="historyContent.value.length != 0">
         <ion-list-header>
           <ion-card-title>History</ion-card-title>
         </ion-list-header>
 
-        <ion-item *ngFor="let history of user.history; let i = index">
+        <ion-item *ngFor="let history of user.history | reverse; let i = index">
           <ion-avatar slot="start">
-            <img *ngIf="history.category == 'graphic-book'" src="../../../assets/images/graphic-book.png" >
-            <img *ngIf="history.category == 'e-book'" src="../../../assets/images/e-book.png" >
-            <img *ngIf="history.category == 'games'" src="../../../assets/images/game.png" >
+            <img *ngIf="history.category == 'graphic-book'" src="assets/images/graphic-book.png" >
+            <img *ngIf="history.category == 'e-book'" src="assets/images/e-book.png" >
+            <img *ngIf="history.category == 'games'" src="assets/images/game.png" >
           </ion-avatar>
           <ion-label>
-            <h2 *ngIf="history.category == 'games'" >You play {{ historyContent[i].title }}</h2>
-            <h2 *ngIf="history.category != 'games'" >You read {{ historyContent[i].title }}</h2>
+            <h2 *ngIf="history.category == 'games'" >You play {{ historyContent.value[i].title }}</h2>
+            <h2 *ngIf="history.category != 'games'" >You read {{ historyContent.value[i].title }}</h2>
             <h3>At {{ history.date }}</h3>
             <p>Gain {{ history.point }} points!</p>
           </ion-label>
         </ion-item>
       </ion-list>
-
-    </ion-row>
+    </ion-row> -->
   </ion-grid>
-  
+
 </ion-content>
