@@ -252,7 +252,9 @@ export class AuthService {
 
   async getSetting() {
     console.log('AuthService: Get setting');
-    this.contentService.setting = await this.commonService.getFromStorage('settings');
+    var settings = await this.commonService.getFromStorage('settings');
+    if (settings === null) settings = await this.commonService.getFromJson('settings');
+    this.contentService.setting = settings;
   }
 
 }

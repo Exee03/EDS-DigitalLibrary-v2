@@ -26,7 +26,7 @@ export class ContentService {
     // tslint:disable-next-line: no-unused-expression
     try {
       (this.contents.length === 0) ? this.contents = await this.getContentFromStorage() : null;
-      (this.contents.length === 0) ? this.contents = await this.getContentsFromJson() : null;
+      (this.contents === null) ? this.contents = await this.getContentsFromJson() : null;
     } catch (error) {
       console.log('Error while getting contents: ', error);
     }
